@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="robots" content="index, follow" />
+        <title>Trenkwalder</title>
+
+        {% block stylesheets %}
+
+            {% stylesheets
+                '@TrenkwalderBundle/Resources/public/css/vendor.css'
+                '@TrenkwalderBundle/Resources/public/css/trenkwalder.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+
+        {% endblock %}
+
+    </head>
+    <body>
+
+        <div class="flash-messages">
+            {% for flash_message in app.session.flashBag.get('error') %}
+                <div class="flash-message flash-error" style="display:none;">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+
+            {% for flash_message in app.session.flashBag.get('notice') %}
+                <div class="flash-message flash-notice" style="display:none;">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        {% block body %}
+            block body
+        {% endblock %}
+
+        <script>
+            var Trenkwalder = Trenkwalder || {};
+            Trenkwalder.Config = {{ config|json_encode|raw }};
+        </script>
+
+        <script src="https://cdn.auth0.com/js/lock/10.9.1/lock.min.js"></script>
+
+        {% block javascripts %}
+            {% javascripts
+            '@TrenkwalderBundle/Resources/public/js/vendor.js'
+            '@TrenkwalderBundle/Resources/public/js/trenkwalder.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'TrenkwalderBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="header">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') and app.user %}
+
+                {{ app.user.name }}
+
+                {% if app.user.picture %}
+                    <img src="{{ app.user.picture }}" width="80" height="80" alt="{{ app.user.name }}" title="{{ app.user.name }}"/>
+                {% else %}
+                    <!-- TODO-IB: add alternative user profile image-->
+                {% endif %}
+
+                <a class="btn" href="/logout">Logout</a>
+            {% endif %}
+        </div>
+        <div class="content">
+
+            <div class="row">
+                <div class="col-xs-3">
+                    {% block main_nav %}
+                        <div class="main-nav">
+                            <ul>
+                                <li>
+                                    {{ 'import.profile'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'cv.generator'|trans }}
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_profile') }}" title="{{ 'my.profile'|trans }}">
+                                        {{ 'my.profile'|trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    {{ 'my.documents'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'my.applications'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'job.search'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'job.alarm'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'job.sharer'|trans }}
+                                </li>
+                                <li>
+                                    {{ 'watch.list'|trans }}
+                                </li>
+                            </ul>
+                        </div>
+                    {% endblock %}
+                </div>
+                <div class="col-xs-9">
+                    {% block sub_nav %}
+
+                    {% endblock %}
+
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

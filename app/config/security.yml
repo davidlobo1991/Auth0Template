@@ -1,0 +1,36 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        hwi:
+            id: trenkwalder.user_provider
+
+    firewalls:
+
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        secured_area:
+            anonymous: ~
+            logout:
+                path:   /logout
+                target: /
+            oauth:
+                resource_owners:
+                    auth0: "/auth0/callback"
+                login_path: /
+                use_forward: false
+                failure_path: /no-access
+
+                oauth_user_provider:
+                    service: trenkwalder.user_provider
+
+

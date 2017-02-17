@@ -1,0 +1,42 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+auth0_login:
+    path: /auth0/callback
+
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+index:
+    path: /
+    defaults: {_controller: TrenkwalderBundle:Index:index}
+
+data_privacy:
+    path: /data-privacy
+    defaults: {_controller: TrenkwalderBundle:Index:dataPrivacy}
+
+no-access:
+    path: /no-access
+    defaults: {_controller: TrenkwalderBundle:Index:noAccess}
+
+user_profile_personal_data_update:
+    path: /user/profile/personal-data-update
+    defaults: {_controller: TrenkwalderBundle:User/Profile/PersonalData:update}
+
+user_profile_contact_data_update:
+    path: /user/profile/contact-data-update
+    defaults: {_controller: TrenkwalderBundle:User/Profile/ContactData:update}
+
+user_profile:
+    path: /user/profile
+    defaults: {_controller: TrenkwalderBundle:User\Profile:index}
+
+logout:
+    path: /logout

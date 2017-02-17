@@ -1,0 +1,141 @@
+imports:
+    - { resource: assetic.yml }
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+    monolog.error.mail.from: 'noreply@trenkwalder.com'
+    monolog.error.mail.to: ['roman.eckert@inblau.de','error@trenkwalder.com']
+
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+    form_themes:
+        - 'TrenkwalderBundle::form.html.twig'
+
+    globals:
+        config:
+            auth0:
+                base_url: "%auth0.base_url%"
+                redirect_url: "%auth0.redirect_url%"
+                client_id: "%auth0.client_id%"
+
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.search_result:
+        sonata.block.service.text:
+        sonata.admin.block.stats:
+            contexts: [admin]
+
+sonata_admin:
+
+    dashboard:
+        blocks:
+            -
+                class: col-lg-3 col-xs-6
+                position: top
+                type: sonata.admin.block.stats
+                settings:
+                    code: administration.user
+                    icon: fa-user
+                    text: View Users
+
+    templates:
+        layout: AdminBundle::standard_layout.html.twig
+
+    title: Trenkwalder
+    title_logo: /bundles/trenkwalder/img/trenkwalder_32_32.png
+
+hwi_oauth:
+
+    firewall_names: [secured_area]
+    resource_owners:
+        auth0:
+            type:                auth0
+            base_url:            "https://%auth0.base_url%"
+            client_id:           "%auth0.client_id%"
+            client_secret:       "%auth0.client_secret%"
+
+monolog:
+    handlers:
+        mail:
+            type: fingers_crossed
+            action_level: error
+            handler: deduplicated
+        deduplicated:
+            type: deduplication
+            handler: swift
+        swift:
+            type: swift_mailer
+            from_email: "%monolog.error.mail.from%"
+            to_email: "%monolog.error.mail.to%"
+            subject: 'An Error Occurred! %%message%%'
+            level: debug
+            formatter: monolog.formatter.html
+            content_type: text/html
+

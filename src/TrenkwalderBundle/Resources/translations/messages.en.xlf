@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="fff062c689b35a780249a18ce867e237" resname="an.error.has.occurred">
+        <source>an.error.has.occurred</source>
+        <target>An error has occurred.</target>
+      </trans-unit>
+      <trans-unit id="219f491b3b0e95f2f64f9451d9067bc3" resname="contact.data">
+        <source>contact.data</source>
+        <target>Contact Data</target>
+      </trans-unit>
+      <trans-unit id="6eab02156ab952ae52832b412dc02050" resname="import.profile">
+        <source>import.profile</source>
+        <target>Import Profile</target>
+      </trans-unit>
+      <trans-unit id="b22cd519f9792da60e28a5fe9269cc49" resname="cv.generator">
+        <source>cv.generator</source>
+        <target>CV generator</target>
+      </trans-unit>
+      <trans-unit id="9811a8173c44feb7e2100fbe3e8fe42d" resname="personal.data">
+        <source>personal.data</source>
+        <target>Personal data</target>
+      </trans-unit>
+      <trans-unit id="69f2afc2390cec954f7c208b07212d39" resname="resume">
+        <source>resume</source>
+        <target>Resumé</target>
+      </trans-unit>
+      <trans-unit id="43781db5c40ecc39fd718685594f0956" resname="save">
+        <source>save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="90f152e0f8feed5633b2cf7fc949ba97" resname="welcome.to.trenkwalder">
+        <source>welcome.to.trenkwalder</source>
+        <target>Welcome to Trenkwalder</target>
+      </trans-unit>
+      <trans-unit id="c55c81df7a651b81fe573aea340a39ac" resname="data.has.been.saved">
+        <source>data.has.been.saved</source>
+        <target>data.has.been.saved</target>
+      </trans-unit>
+      <trans-unit id="abbdf5f8086f759c80177ec1fba520c2" resname="my.profile">
+        <source>my.profile</source>
+        <target>__my.profile</target>
+      </trans-unit>
+      <trans-unit id="53419ccd97e741dd09c7aed5d65d28dd" resname="my.documents">
+        <source>my.documents</source>
+        <target>__my.documents</target>
+      </trans-unit>
+      <trans-unit id="5f4c2c4a25c4970731ae6b645b9e18a6" resname="my.applications">
+        <source>my.applications</source>
+        <target>__my.applications</target>
+      </trans-unit>
+      <trans-unit id="621eddc869dbfdf9e8c8afae29438f2e" resname="job.search">
+        <source>job.search</source>
+        <target>__job.search</target>
+      </trans-unit>
+      <trans-unit id="e8e78470ced1dafefd289a1cb9ad575e" resname="job.alarm">
+        <source>job.alarm</source>
+        <target>__job.alarm</target>
+      </trans-unit>
+      <trans-unit id="99d00ad419db1f4e514ec69dfb06c09a" resname="job.sharer">
+        <source>job.sharer</source>
+        <target>__job.sharer</target>
+      </trans-unit>
+      <trans-unit id="602e28e52016fe19681e030ffc274be1" resname="watch.list">
+        <source>watch.list</source>
+        <target>__watch.list</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

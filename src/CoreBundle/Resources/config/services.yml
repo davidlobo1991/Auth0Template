@@ -1,0 +1,23 @@
+services:
+    core.locale_listener_request_listener:
+        class: CoreBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    core.user_locale_listener:
+            class: CoreBundle\EventListener\UserLocaleListener
+            arguments: ['@session']
+            tags:
+                - { name: kernel.event_subscriber }
+    #core.localization_service:
+        #class: CoreBundle\Service\LocalizationService
+        #public: true
+        #arguments: ['@translator']
+
+    #core.twig.localization_extension:
+        #class: CoreBundle\Twig\LocalizationExtension
+        #public: false
+        #arguments: ['@core.localization_service']
+        #tags:
+            #- { name: twig.extension }

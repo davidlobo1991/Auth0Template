@@ -1,0 +1,39 @@
+{% extends 'TrenkwalderBundle::user.html.twig' %}
+
+{% block sub_nav %}
+
+    <div class="sub-nav-wrapper">
+        <ul id="sub-nav">
+            <li data-menuanchor="resume">
+                <a href="#tab/resume">
+                    {{ 'resume'|trans }}
+                </a>
+            </li>
+            <li data-menuanchor="personal-data">
+                <a href="#tab/personal-data">
+                    {{ 'personal.data'|trans }}
+                </a>
+            </li>
+            <li data-menuanchor="contact-data">
+                <a href="#tab/contact-data">
+                    {{ 'contact.data'|trans }}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="page-slider" style="display:none;">
+        <div class="section" data-anchor="tab">
+            <!-- do not remove, used to prevent empty anchor in url -->
+            <div class="slide" style="display:none;"></div>
+            {{ render(controller('TrenkwalderBundle:User/Profile/Resume:index')) }}
+            {{ render(controller('TrenkwalderBundle:User/Profile/PersonalData:index')) }}
+            {{ render(controller('TrenkwalderBundle:User/Profile/ContactData:index')) }}
+        </div>
+    </div>
+{% endblock %}
+
+

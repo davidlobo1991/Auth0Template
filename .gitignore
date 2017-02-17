@@ -1,0 +1,22 @@
+# Ignore .DS_store file
+.DS_Store
+/app/config/parameters.yml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+/vendor/
+.idea
+/web/bundles
+/web/css
+/web/js
+/src/TrenkwalderBundle/Resources/public/css/*.css
+/src/TrenkwalderBundle/Resources/public/js/*.js
+/node_modules
